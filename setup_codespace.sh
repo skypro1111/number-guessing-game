@@ -112,7 +112,7 @@ INSERT_GAME_RESULT=$($PSQL "INSERT INTO games(user_id, number_of_guesses) VALUES
 echo "You guessed it in $NUMBER_OF_GUESSES tries. The secret number was $SECRET_NUMBER. Nice job!"
 SCRIPT
 $GIT commit -qam "feat: save game results to database"
-$GIT commit -q --allow-empty -m "refactor: tidy up script output"
-$GIT commit -q --allow-empty -m "chore: finalize number guessing game"
+echo "# Number Guessing Game" > README.md && $GIT add README.md && $GIT commit -qm "chore: add readme"
+echo "Guess a random number between 1 and 1000." >> README.md && $GIT commit -qam "chore: describe game in readme"
 git status --short; git log --oneline
 echo "number_guessing_game ready. Now click Run in CodeRoad."
