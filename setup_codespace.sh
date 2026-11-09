@@ -1,7 +1,8 @@
 #!/bin/bash
 # Run inside the Codespace (Number Guessing Game)
+# Run it from the root folder of the CodeRoad workspace for this project
 set -e
-cd /workspace/project
+echo "Working in: $(pwd)"
 psql -U freecodecamp -d postgres -tAc "SELECT 1 FROM pg_database WHERE datname='number_guess'" | grep -q 1 || { psql -U freecodecamp -d postgres -c "CREATE DATABASE number_guess"; psql -U freecodecamp -d number_guess <<'SQL'
 CREATE TABLE users(user_id SERIAL PRIMARY KEY, username VARCHAR(22) UNIQUE NOT NULL);
 CREATE TABLE games(game_id SERIAL PRIMARY KEY, user_id INT NOT NULL REFERENCES users(user_id), number_of_guesses INT NOT NULL);
